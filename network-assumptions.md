@@ -1,9 +1,21 @@
-# Network Assumptions
+# Network assumptions to verify
 
-This document provides high-level public guidance for the public technical ecosystem around Kurogane Hub.
+## Input
 
-Kurogane Hub operates across cyber-physical environments where hub services, satellite components, customer users, operators, OT networks, and IT networks must be treated as distinct trust zones. Designs should minimize unnecessary exposure, preserve data sovereignty, limit credential scope, and support auditable operational risk reduction.
+Obtain an approved flow list with source, destination, direction, protocol, purpose, owner and expiry. Draw IT/OT and external-service boundaries without placing sensitive addresses in public material.
 
-The commercial production core remains private. Selected auditors, partners, investors, and security researchers can request controlled technical review access when a deeper assessment is appropriate.
+## Questions
 
-This document intentionally avoids production implementation details, sensitive detection logic, customer deployment specifics, internal endpoints, credentials, real IP addresses, and attack-enabling details.
+Who can reach an engineering station, collector or editor? Are remote-support paths time-limited? Which DNS, time and identity services are required? Which outbound destinations are allowed? What changes when Internet or a gateway fails?
+
+## Verification
+
+Compare the proposed flow list with configuration evidence and permitted observations. Test intended denials in a separate environment under an agreed plan. Do not infer isolation merely from a VLAN label, or scan an operational network without owner and vendor approval.
+
+## Public lab assumptions
+
+Compose starts the generator without an exposed port. Node-RED is optional and publishes to `127.0.0.1`; its editor has no configured authentication. Keep it on a trusted development machine. Loopback is not user authorization, and container networking still needs an exposure review before shared use.
+
+See [Docker port-publishing behavior](https://docs.docker.com/engine/network/port-publishing/) and [Node-RED security guidance](https://nodered.org/docs/user-guide/runtime/securing-node-red). These assumptions are not a firewall specification for a private Hub installation.
+
+Output: approved flows, tested denials, outage behavior and explicitly unresolved dependencies.

@@ -1,9 +1,17 @@
-# Controlled Review Access
+# Requesting controlled technical review
 
-This document provides high-level public guidance for the public technical ecosystem around Kurogane Hub.
+## Request
 
-Kurogane Hub operates across cyber-physical environments where hub services, satellite components, customer users, operators, OT networks, and IT networks must be treated as distinct trust zones. Designs should minimize unnecessary exposure, preserve data sovereignty, limit credential scope, and support auditable operational risk reduction.
+Contact [info@mkdl.jp](mailto:info@mkdl.jp) with your organization, purpose, proposed component/version, questions, expected deliverable and necessary evidence. Do not send secrets, exploit details or customer data in the initial request. Sensitive findings use the [disclosure channel](disclosure-policy.md).
 
-The commercial production core remains private. Selected auditors, partners, investors, and security researchers can request controlled technical review access when a deeper assessment is appropriate.
+## Conditions to agree before access
 
-This document intentionally avoids production implementation details, sensitive detection logic, customer deployment specifics, internal endpoints, credentials, real IP addresses, and attack-enabling details.
+Define permitted systems and methods, dates, identities, confidentiality terms, read-only or write permissions, evidence storage, recipients, retention/deletion and stop conditions. Agree how findings are reported and what may be published. A request does not grant access or authorization to test.
+
+## Review result
+
+Link each conclusion to the reviewed version and raw evidence. Separate verified behavior, design claims, hypotheses and inaccessible areas. Close access after the review and record unresolved findings, remediation owner and any follow-up scope.
+
+## Limit
+
+Requests are evaluated case by case. This document does not promise private source access, a response deadline, an audit package, a certification or a bug bounty. No private deployment details need to appear in public issues to start the conversation.
