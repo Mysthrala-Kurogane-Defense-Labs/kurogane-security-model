@@ -1,9 +1,23 @@
-# Credential Handling
+# Credential handling review
 
-This document provides high-level public guidance for the public technical ecosystem around Kurogane Hub.
+## Inputs
 
-Kurogane Hub operates across cyber-physical environments where hub services, satellite components, customer users, operators, OT networks, and IT networks must be treated as distinct trust zones. Designs should minimize unnecessary exposure, preserve data sovereignty, limit credential scope, and support auditable operational risk reduction.
+List accounts and service identities by purpose, owner, scope, storage location, expiry, rotation and revocation path. Keep actual secrets out of the register and public issues.
 
-The commercial production core remains private. Selected auditors, partners, investors, and security researchers can request controlled technical review access when a deeper assessment is appropriate.
+## Recommended checks
 
-This document intentionally avoids production implementation details, sensitive detection logic, customer deployment specifics, internal endpoints, credentials, real IP addresses, and attack-enabling details.
+- Separate individual, administrator and service identities; avoid anonymous shared support access.
+- Require explicit approval and bounded access for a provider session.
+- Keep credentials outside source, images, fixtures, URLs and logs. Use a suitable secret store for the actual deployment.
+- Define rotation and revocation after personnel, provider or incident changes.
+- Determine how collectors behave after expiry or lost access; prevent unbounded retries or silent data loss.
+
+## Evidence exercise
+
+In an agreed test environment, revoke an invented service identity, confirm new access fails, and verify that the operator can distinguish lost access from normal telemetry. Check logs for secret leakage without publishing the logs themselves.
+
+## Public boundary
+
+The public SDK implements no transport credentials or authentication. Its URL preview rejects embedded user information but cannot identify a secret placed in a query or event extension. No private-system credential store, MFA policy or rotation mechanism is attested here.
+
+Output: dated access review, demonstrated revocation and unresolved lifecycle decisions, with owners.

@@ -1,9 +1,19 @@
-# SBOM Strategy
+# Software component inventory and SBOM review
 
-This document provides high-level public guidance for the public technical ecosystem around Kurogane Hub.
+## Purpose and boundary
 
-Kurogane Hub operates across cyber-physical environments where hub services, satellite components, customer users, operators, OT networks, and IT networks must be treated as distinct trust zones. Designs should minimize unnecessary exposure, preserve data sovereignty, limit credential scope, and support auditable operational risk reduction.
+An SBOM describes components of an identified artifact. It does not prove that the artifact is secure, that no advisory applies or that an installation runs that version. This repository publishes a review strategy, not an SBOM for the private Hub.
 
-The commercial production core remains private. Selected auditors, partners, investors, and security researchers can request controlled technical review access when a deeper assessment is appropriate.
+## Minimum review package
 
-This document intentionally avoids production implementation details, sensitive detection logic, customer deployment specifics, internal endpoints, credentials, real IP addresses, and attack-enabling details.
+Request artifact name/version and hash, repository commit, generation tool/version/date, component names/versions/identifiers, direct and transitive relationships, licenses, and stated completeness limitations. Include runtimes, base images and system packages where relevant; zero Elixir dependencies does not mean zero runtime components.
+
+Use an agreed machine-readable specification such as [SPDX](https://spdx.dev/use/specifications/) or [CycloneDX](https://cyclonedx.org/specification/overview/). Record the selected specification version and validate the document against it.
+
+## Verification
+
+Compare the inventory with lockfiles, build inputs and the delivered image/artifact. Review advisories at a stated date and retain disposition evidence for each affected component. A digest makes an image identifiable; it does not eliminate the need for update and advisory review.
+
+## Output
+
+An inventory tied to an immutable artifact plus a separate vulnerability-review record. Mark omitted components and unsupported claims. No signed provenance, published private SBOM or automatic update service is claimed here.

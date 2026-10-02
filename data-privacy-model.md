@@ -1,9 +1,20 @@
-# Data Privacy Model
+# Data and privacy review
 
-This document provides high-level public guidance for the public technical ecosystem around Kurogane Hub.
+## Input
 
-Kurogane Hub operates across cyber-physical environments where hub services, satellite components, customer users, operators, OT networks, and IT networks must be treated as distinct trust zones. Designs should minimize unnecessary exposure, preserve data sovereignty, limit credential scope, and support auditable operational risk reduction.
+Classify operational inventory, telemetry, alarms, identities, audit logs and support evidence. Industrial data may reveal production patterns; logs and user records can contain personal information. Synthetic fixtures are not a substitute for reviewing real data flows.
 
-The commercial production core remains private. Selected auditors, partners, investors, and security researchers can request controlled technical review access when a deeper assessment is appropriate.
+## Review steps
 
-This document intentionally avoids production implementation details, sensitive detection logic, customer deployment specifics, internal endpoints, credentials, real IP addresses, and attack-enabling details.
+1. Map each field to a stated purpose and required recipient. Remove unnecessary collection before choosing retention.
+2. Record storage, backups, administrative access, external transfers and deletion limits.
+3. Ask the actual controller and reviewer to determine legal basis, notices, processors and applicable transfer requirements. Do not infer these from hosting location.
+4. Exercise export and deletion with invented records in an agreed test environment. Record copies that remain and why.
+
+## Output
+
+A private data register with purpose, sensitivity, owner, recipients, retention, access and supporting evidence. Unknown processor, location or deletion behavior remains a review gap.
+
+## Limits
+
+The public examples contain invented identifiers and fixed values. An extension field can still leak a secret or a person's name; schema validation does not detect that. No private deployment's privacy compliance, retention mechanism, encryption or legal basis is established by this document. See the [data-control guide](https://github.com/Mysthrala-Kurogane-Defense-Labs/kurogane-docs/blob/main/docs/data-sovereignty.md).
